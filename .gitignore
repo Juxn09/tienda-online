@@ -1,0 +1,18 @@
+# Credenciales: NUNCA se suben
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editor / sistema
+.vscode/
+Thumbs.db
+desktop.ini
+
+# Archivos temporales de Office (cuando la presentación está abierta)
+~$*
+
+# Respaldos de SQL Server
+*.bak
