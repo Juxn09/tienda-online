@@ -1,0 +1,39 @@
+VERIFICACIÓN DE LA MIGRACIÓN  SQL Server -> MongoDB
+
+1. CONTEOS
+  [OK   ] Categoria = documentos de categorias               SQL=10  MongoDB=10
+  [OK   ] Proveedor = documentos de proveedores              SQL=15  MongoDB=15
+  [OK   ] Producto = documentos de productos                 SQL=300  MongoDB=300
+  [OK   ] Cliente = documentos de clientes                   SQL=800  MongoDB=800
+  [OK   ] Pedido = documentos de pedidos                     SQL=2000  MongoDB=2000
+  [OK   ] Resena = documentos de resenas                     SQL=1200  MongoDB=1200
+  [OK   ] DetallePedido = elementos de pedidos.items         SQL=5190  MongoDB=5190
+  [OK   ] Pago = elementos de pedidos.pagos                  SQL=2184  MongoDB=2184
+  [OK   ] Direccion = elementos de clientes.direcciones      SQL=1000  MongoDB=1000
+  [OK   ] Envio = pedidos con envio                          SQL=1896  MongoDB=1896
+
+2. REFERENCIAS (referencias rotas: deben ser 0)
+  [OK   ] pedidos.clienteId -> clientes                      SQL=0  MongoDB=0
+  [OK   ] pedidos.items.productoId -> productos              SQL=0  MongoDB=0
+  [OK   ] productos.categoriaId -> categorias                SQL=0  MongoDB=0
+  [OK   ] productos.proveedorId -> proveedores               SQL=0  MongoDB=0
+  [OK   ] resenas.productoId -> productos                    SQL=0  MongoDB=0
+  [OK   ] resenas.clienteId -> clientes                      SQL=0  MongoDB=0
+
+3. ESTRUCTURAS EMBEBIDAS
+  [OK   ] Pedidos con distinta cantidad de items             SQL=0  MongoDB=0
+  [OK   ] Pedidos con distinta cantidad de pagos             SQL=0  MongoDB=0
+  [OK   ] Pedidos con envio incoherente con su estado        SQL=0  MongoDB=0
+  [OK   ] Pedidos sin items                                  SQL=0  MongoDB=0
+  [OK   ] Totales que no son Decimal128                      SQL=0  MongoDB=0
+
+4. CONTENIDO
+  [OK   ] Suma de totales de pedidos                         SQL=2212003800.00  MongoDB=2212003800.00
+  [OK   ] Suma de pagos aprobados                            SQL=2137413000.00  MongoDB=2137413000.00
+  [OK   ] Pedidos cuyo total no es la suma de sus items      SQL=0  MongoDB=0
+
+5. DATOS PUNTUALES (pedidos de muestra, campo por campo)
+  [OK   ] Pedidos con diferencias (22 revisados)             SQL=0  MongoDB=0
+
+Resultado: 25 de 25 verificaciones correctas.
+MIGRACIÓN VERIFICADA: no se perdió ni se alteró información.
