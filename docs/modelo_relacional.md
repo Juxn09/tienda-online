@@ -2,7 +2,7 @@
 
 ## Entidades
 
-| # | Tabla | Descripción | Registros aprox. |
+| # | Tabla | Descripción | Registros |
 |---|---|---|---|
 | 1 | Categoria | Clasificación de productos | 10 |
 | 2 | Proveedor | Empresas que suministran productos | 15 |
@@ -10,12 +10,12 @@
 | 4 | Cliente | Compradores registrados | 800 |
 | 5 | Direccion | Direcciones de envío de cada cliente | 1.000 |
 | 6 | Pedido | Compra realizada por un cliente | 2.000 |
-| 7 | DetallePedido | Productos incluidos en cada pedido | 5.500 |
-| 8 | Pago | Intentos de pago de un pedido | 2.200 |
-| 9 | Envio | Despacho de un pedido | 1.900 |
+| 7 | DetallePedido | Productos incluidos en cada pedido | 5.190 |
+| 8 | Pago | Intentos de pago de un pedido | 2.184 |
+| 9 | Envio | Despacho de un pedido | 1.896 |
 | 10 | Resena | Calificación de un cliente a un producto | 1.200 |
 
-Total aproximado: 14.900 registros.
+Total: 14.595 registros (scripts `sql/CrearTablas.sql` y `sql/CargarDatos.sql`).
 
 ## Diagrama entidad-relación
 
@@ -61,6 +61,11 @@ erDiagram
 
 - Estados de pedido: Pendiente, Pagado, Enviado, Entregado, Cancelado.
 - Solo los pedidos Enviados o Entregados tienen envío; solo los Entregados tienen `fecha_entrega`.
-- Todo pedido que no esté Pendiente tiene al menos un pago Aprobado.
+- Pedidos Pagados, Enviados o Entregados: exactamente un pago Aprobado por el valor total (algunos con un intento Rechazado previo). Pedidos Cancelados: un pago Rechazado. Pedidos Pendientes: sin pagos.
 - `total` = Σ (cantidad × precio_unitario − descuento) de sus detalles.
 - Un cliente solo reseña productos que compró en un pedido Entregado.
+- La dirección de un pedido pertenece al mismo cliente del pedido.
+
+Estas reglas se comprueban con `sql/VerificarCoherencia.sql`: 11 consultas que buscan violaciones; todas devuelven 0.
+
+Distribución de estados: Entregado 1.883 · Cancelado 69 · Pagado 20 · Pendiente 15 · Enviado 13.
