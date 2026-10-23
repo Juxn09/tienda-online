@@ -27,6 +27,7 @@ Base de datos relacional de una tienda en línea en SQL Server (10 entidades, 14
 | `migracion/ProbarConexion.py` | Prueba las conexiones a SQL Server y MongoDB |
 | `migracion/Migrar.py` | Migración ETL: extrae, transforma (embebe/referencia) y carga en MongoDB |
 | `migracion/Verificar.py` | Compara SQL Server y MongoDB en 5 capas |
+| `interfaz/App.py` | Interfaz web (Streamlit): resumen, consultas con gráficos, búsqueda de pedidos y verificación |
 | `consultas/` | Las 7 consultas de agregación, comentadas |
 | `docs/modelo_relacional.md` | Modelo relacional, relaciones y decisiones de diseño |
 | `docs/ModeloDocumental.md` | Modelo documental y justificación de Embedding vs. Referencing |
@@ -41,6 +42,7 @@ Base de datos relacional de una tienda en línea en SQL Server (10 entidades, 14
 - Python 3.14 con `pyodbc`, `pymongo` y `python-dotenv`
 - ODBC Driver 18 for SQL Server
 - MongoDB 8.3 + MongoDB Compass (mongosh integrado)
+- Streamlit para la interfaz web
 
 ## Cómo ejecutar
 
@@ -93,3 +95,11 @@ La verificación debe terminar con `25 de 25 verificaciones correctas`. La migra
 ### 6. Ejecutar las consultas
 
 En MongoDB Compass, abrir la terminal mongosh, ejecutar `use TiendaOnline` y pegar el contenido de cualquier archivo de `consultas/`.
+
+### 7. Interfaz web (opcional)
+
+```powershell
+streamlit run interfaz\App.py
+```
+
+Se abre en `http://localhost:8501`. Tiene cuatro secciones: resumen de la migración, las 7 consultas con gráficos, búsqueda de un pedido (muestra qué es embebido, qué es referencia y qué es copia histórica) y un botón que ejecuta la verificación. Para detenerla: Ctrl + C.
