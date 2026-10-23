@@ -2,7 +2,7 @@
 
 Taller Evaluativo No. 3 – Bases de Datos II  
 Profesor: Juan Carlos Gómez  
-Integrantes: Juan Camilo, Marshall Robinson
+Integrantes: Juan Camilo Moreno, Marshall Robinson
 
 ## Descripción
 
@@ -47,6 +47,13 @@ Base de datos relacional de una tienda en línea en SQL Server (10 entidades, 14
 ### 1. Requisitos
 
 SQL Server con SSMS, MongoDB en `localhost:27017`, Python 3.12 o superior y el ODBC Driver 18 for SQL Server.
+
+### Descargar el proyecto
+
+```powershell
+git clone https://github.com/Juxn09/tienda-online.git
+cd tienda-online
+```
 
 ### 2. Crear y cargar la base relacional
 
