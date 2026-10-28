@@ -28,7 +28,7 @@ Base de datos relacional de una tienda en línea en SQL Server (10 entidades, 14
 | `migracion/Migrar.py` | Migración ETL: extrae, transforma (embebe/referencia) y carga en MongoDB |
 | `migracion/Verificar.py` | Compara SQL Server y MongoDB en 5 capas |
 | `interfaz/App.py` | Interfaz web (Streamlit): resumen, consultas con gráficos, búsqueda de pedidos y verificación |
-| `consultas/` | Las 7 consultas de agregación, comentadas |
+| `consultas/` | Las 7 consultas de agregación, listas para ejecutar en mongosh (la explicación de cada etapa está en `docs/Consultas.md`) |
 | `docs/modelo_relacional.md` | Modelo relacional, relaciones y decisiones de diseño |
 | `docs/ModeloDocumental.md` | Modelo documental y justificación de Embedding vs. Referencing |
 | `docs/Verificacion.md` | Cómo se comprobó que no se perdió información |

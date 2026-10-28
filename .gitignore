@@ -16,3 +16,6 @@ desktop.ini
 
 # Respaldos de SQL Server
 *.bak
+
+# Apuntes personales (no se suben)
+Apuntes/
